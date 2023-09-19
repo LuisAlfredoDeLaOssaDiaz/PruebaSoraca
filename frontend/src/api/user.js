@@ -4,8 +4,9 @@ export class User {
   baseApi = ENV.BASE_API;
 
   async getMe(accessToken) {
+    // console.log(accessToken);
     try {
-      const url = `http://127.0.0.1:3977/api/v1/user`;
+      const url = `${this.baseApi}/${ENV.API_ROUTES.USER}`;
       const params = {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -13,7 +14,9 @@ export class User {
       };
 
       const response = await fetch(url, params);
-      const result = await response.json();
+      const resul = await response.json();
+      const result = resul.msg[0]
+      // console.log(result);
 
       if (response.status !== 200) throw result;
 

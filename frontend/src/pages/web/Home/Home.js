@@ -9,7 +9,7 @@ const authController = new Auth()
 
 export function Home() {
   const { login } = useAuth();
-  
+
   const formik = useFormik({
     initialValues: {
       id: "",
@@ -29,7 +29,7 @@ export function Home() {
           console.log(response);
         }
 
-        login(response.access);
+        login(response.access)
       } catch (error) {
         console.error(error);
       }
